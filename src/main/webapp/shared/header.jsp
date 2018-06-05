@@ -11,7 +11,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%String url = (request.getRequestURL()).toString();%>
-<%= url.endsWith("formulaire.jsp") %>
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <%--logo--%>
     <a class="navbar-brand" href="index.jsp"><img src="resources/logo_isep.svg" class="logo"></a>

@@ -17,8 +17,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	// add a reference to our security data source
-
+	// add a reference to our security data sourc
 	@Autowired
 	private DataSource securityDataSource;
 
