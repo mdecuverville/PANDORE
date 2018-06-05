@@ -1,0 +1,42 @@
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+#container {
+    min-height:100%;
+    position:relative;
+}
+#header {
+    height: 10%;
+    /*padding:10px;*/
+}
+#body {
+    padding:30px 15% 60px 15%;
+    /*padding-bottom:60px;    Height of the footer */
+}
+#footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+    padding: 10px;
+    background-color: #343a40;
+}
+.logo {
+    width: 65%;
+    height: 65%;
+}
+.pagetitle {
+    /*margin-left: auto;
+    margin-right: auto;*/
+    text-align: center;
+}
+.categoryselect {
+    margin-right: 50px ;
+    margin-bottom: 20px;
+}
+.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+}
