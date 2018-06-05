@@ -20,7 +20,22 @@
         <%@include file="shared/header.jsp"%>
     </div>
     <div id="body">
-        <security:authorize access="isAuthenticated()">
+        <h2 class="pagetitle">Panneau d'affichage</h2>
+
+        <select class="custom-select col-12 col-md-3">
+            <option selected disabled>Catégories</option>
+            <option>Enseignement</option>
+            <option>Parcours de Formation</option>
+            <option>Matériel d'entretien/Salle</option>
+            <option>Autres</option>
+        </select>
+
+
+        <span class="filtre"><span class="fas fa-filter"></span>&nbsp;<input type="text" placeholder="Filtre..."/></span>
+
+        <p>Ici se situera le tableau du panneau d'affichage</p>
+
+        <%--<security:authorize access="isAuthenticated()">
             user : <security:authentication property="principal.username" />
             role : <security:authentication property="principal.authorities" />
         </security:authorize>
@@ -42,7 +57,7 @@
 
         <security:authorize access="hasRole('ADMINISTRATOR')">
             <p>I AM AN ADMINISTRATOR</p>
-        </security:authorize>
+        </security:authorize>--%>
 
     </div>
     <div id="footer">

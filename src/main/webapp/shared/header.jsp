@@ -22,7 +22,7 @@
                 <a class="nav-link" href="index.jsp">Panneau d'Affichage <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Nouveau message</a>
+                <a class="nav-link" href="/message/add">Nouveau message</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Messagerie</a>

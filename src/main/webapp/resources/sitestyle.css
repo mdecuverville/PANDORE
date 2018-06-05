@@ -33,8 +33,7 @@ html, body {
     text-align: center;
 }
 .categoryselect {
-    margin-right: 50px ;
-    margin-bottom: 20px;
+    margin: 20px 50px 0px 0px;
 }
 .navbar-nav {
     margin-left: auto;

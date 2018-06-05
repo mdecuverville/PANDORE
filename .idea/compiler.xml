@@ -9,8 +9,5 @@
         <module name="PANDORE" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="PANDORE" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

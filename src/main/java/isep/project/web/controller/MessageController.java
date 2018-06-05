@@ -1,12 +1,17 @@
 package isep.project.web.controller;
 
+import isep.project.web.dao.ConversationDAO;
+import isep.project.web.entity.ConversationEntity;
 import isep.project.web.entity.MessageEntity;
+import isep.project.web.service.ConversationService;
+import isep.project.web.service.IConversationService;
 import isep.project.web.service.IMessageService;
 import isep.project.web.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -21,6 +26,8 @@ public class MessageController {
     private IMessageService messageService;
     @Autowired
     private IUserService userService;
+    @Autowired
+    private IConversationService conversationService;
 
     @GetMapping("/list")
     public String listAll(Model theModel) {
@@ -43,20 +50,45 @@ public class MessageController {
     @PostMapping("/save")
     public String save(@ModelAttribute("message") MessageEntity theMessage) {
 
-//        See if the message if the first of a conversation
-//        if (theMessage.getType() == "FIRST") {
-//            ConversationEntity newConversation = new ConversationEntity();
-//            newConversation.setConversationName(theMessage.getTitle());
-//        }
+        try {
 
-//        save the message using our isep.project.web.service
-//        System.out.println(theMessage.getCreatedBy().getFirstName());
+            ConversationEntity newConversation = new ConversationEntity();
+            newConversation.setConversationName(theMessage.getTitle());
 
-        System.out.println(theMessage);
+            newConversation.addMessage(theMessage);
+            theMessage.setConversationIn(newConversation);
 
-        messageService.save(theMessage);
+            messageService.save(theMessage);
+            conversationService.save(newConversation);
 
-        return "redirect:/message/list";
+            return "redirect:/index.jsp";
+        }
+
+        catch (NullPointerException e) {
+            return "redirect:/";
+        }
+
+    }
+
+    @PostMapping("/save/{conversationId}")
+    public String save(@PathVariable("conversationId") int conversationId,@ModelAttribute("message") MessageEntity theMessage) {
+
+        try {
+
+            ConversationEntity conversation = conversationService.getById(conversationId);
+
+            messageService.save(theMessage);
+
+            conversation.addMessage(theMessage);
+            theMessage.setConversationIn(conversation);
+
+            return "redirect:/message/list";
+        }
+
+        catch (NullPointerException e) {
+            return "redirect:/";
+        }
+
     }
 
     @GetMapping("/update")

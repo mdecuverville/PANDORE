@@ -20,7 +20,7 @@
 
 </head>
 
-<body>
+<body class="bg-info" style="color: #dddddd">
 
 	<div>
 
