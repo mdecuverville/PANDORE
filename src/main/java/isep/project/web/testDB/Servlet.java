@@ -16,8 +16,7 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-
-    //this is a test comment
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = "bae4042645f34c";
         String password = "4be98dbc";

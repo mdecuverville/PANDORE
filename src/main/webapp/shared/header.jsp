@@ -9,6 +9,9 @@
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%String url = (request.getRequestURL()).toString();%>
+<%= url.endsWith("formulaire.jsp") %>
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <%--logo--%>
     <a class="navbar-brand" href="index.jsp"><img src="resources/logo_isep.svg" class="logo"></a>
@@ -18,13 +21,13 @@
 
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.jsp">Panneau d'Affichage <span class="sr-only">(current)</span></a>
+            <li class="nav-item <%=url.endsWith("index.jsp") ? "active" : ""%>">
+                <a class="nav-link" href="index.jsp">Panneau d'Affichage</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Nouveau message</a>
+            <li class="nav-item <%=url.endsWith("formulaire.jsp") ? "active" : ""%>">
+                <a class="nav-link" href="formulaire.jsp">Nouveau message</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <%=url.endsWith("messagerie.jsp") ? "active" : ""%>">
                 <a class="nav-link" href="#">Messagerie</a>
             </li>
             <li class="nav-item dropdown">
