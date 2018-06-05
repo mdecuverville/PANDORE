@@ -1,6 +1,7 @@
 package isep.project.web.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import isep.project.web.service.UserAuthService;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -33,19 +36,6 @@ public class ApplicationConfig implements WebMvcConfigurer {
 	private Environment env;
 	
 	private Logger logger = Logger.getLogger(getClass().getName());
-	
-	// define a bean for ViewResolver
-
-//	@Bean
-//	public ViewResolver viewResolver() {
-//
-//		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-//
-//		viewResolver.setPrefix("/WEB-INF/views");
-//		viewResolver.setSuffix(".jsp");
-//
-//		return viewResolver;
-//	}
 
 	@Bean
 	public UrlBasedViewResolver viewResolver() {
@@ -147,6 +137,11 @@ public class ApplicationConfig implements WebMvcConfigurer {
 		
 		return securityDataSource;
 	}
+
+	@Bean
+	public UserAuthService userAuthService() {
+		return new UserAuthService();
+	}
 	
 	// need a helper method 
 	// read environment property and convert to int
@@ -158,20 +153,32 @@ public class ApplicationConfig implements WebMvcConfigurer {
 		// now convert to int
 
 		return Integer.parseInt(propVal);
-	}	
-	
+	}
+
 	@Bean
-	public LocalSessionFactoryBean sessionFactory(){
-		
-		// create session factorys
+	public SessionFactory sessionFactory() {
+
+		// create session factories
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-		
+
 		// set the properties
 		sessionFactory.setDataSource(myDataSource());
 		sessionFactory.setPackagesToScan(env.getProperty("hibernate.packagesToScan"));
 		sessionFactory.setHibernateProperties(getHibernateProperties());
-		
-		return sessionFactory;
+
+		try {
+			sessionFactory.afterPropertiesSet();
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+
+		return sessionFactory.getObject();
+	}
+
+	@Bean
+	public HibernateTemplate hibernateTemplate() {
+		return new HibernateTemplate(sessionFactory());
 	}
 	
 	@Bean

@@ -11,6 +11,7 @@ public interface UserDAO {
 
     List<UserEntity> getAllUsers();
     UserEntity getUser(int theId);
+    UserEntity getUser(String email);
 
     void saveUser(UserEntity theUser);
     void deleteUser(int theId);

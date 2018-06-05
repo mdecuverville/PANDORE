@@ -56,32 +56,6 @@
             </div>
         </div>
         <% } else { %>
-
-        <%--<form action="${pageContext.request.contextPath}/showMyLoginPage" method="get">--%>
-            <%--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="loginModal">--%>
-                <%--<span class="fas fa-sign-in-alt" aria-hidden="true"></span>--%>
-                <%--Connexion--%>
-            <%--</button>--%>
-        <%--</form>--%>
-        <%--<div class="modal fade" id="loginModal" tabindex="-1" data-controls-modal="your_div_id" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
-            <%--<div class="modal-dialog" role="document">--%>
-                <%--<div class="modal-content">--%>
-                    <%--<div class="modal-header">--%>
-                        <%--<h5 class="modal-title">Connexion</h5>--%>
-                        <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-                            <%--<span aria-hidden="true">&times;</span>--%>
-                        <%--</button>--%>
-                    <%--</div>--%>
-                    <%--<div class="modal-body">--%>
-                        <%--<form action="" method="post">--%>
-                            <%--<label for="email" class="col-4">E-mail :</label><input type="text" id="email" name="email" class="col-8"/> <br />--%>
-                            <%--<label for="password" class="col-4">Mot de passe :</label><input type="password" id="password" name="password" class="col-8"/> <br /> <br />--%>
-                            <%--<button type="submit" class="btn btn-primary col-8 offset-2 offset-md-0 col-md-4 float-md-right">Se connecter</button>--%>
-                        <%--</form>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
         <a href="${pageContext.request.contextPath}/showMyLoginPage" class="btn btn-primary">
             <span class="fas fa-sign-in-alt" aria-hidden="true"></span>
             Connexion

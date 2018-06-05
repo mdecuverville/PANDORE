@@ -3,6 +3,8 @@ package isep.project.web.controller;
 import isep.project.web.entity.UserEntity;
 import isep.project.web.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +32,19 @@ public class UserController {
         return "list-users";
     }
 
+    @GetMapping("/info")
+    public String home(Model model, Authentication authentication) {
+
+        // Get the usermail from the sesssion Auth
+        authentication.getPrincipal();
+
+        // Get the user from the database
+        UserEntity theUser = userService.getByEmail(authentication.getName());
+
+        model.addAttribute("user", theUser);
+        return "user-info";
+    }
+
     @GetMapping("/add")
     public String add(Model theModel) {
 
@@ -44,6 +59,9 @@ public class UserController {
     public String save(@ModelAttribute("user") UserEntity theUser) {
 
         // save the user using our isep.project.web.service
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        theUser.setPasswordHash(encoder.encode(theUser.getPasswordHash()));
         userService.save(theUser);
 
         return "redirect:/user/list";

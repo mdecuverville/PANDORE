@@ -10,6 +10,8 @@ import java.util.List;
 public interface IUserService {
     List<UserEntity> getAll();
     UserEntity getById(int theId);
+    UserEntity getByEmail(String email);
+
 
     void save(UserEntity theUser);
     void delete(int theId);
