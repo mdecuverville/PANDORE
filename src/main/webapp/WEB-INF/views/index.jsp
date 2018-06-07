@@ -8,11 +8,13 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <%@include file="../../shared/resources.jsp"%>
-    <script type="text/javascript" src="../scripts/index.js"></script>
+    <script type="text/javascript" src="/resources/scripts/index.js"></script>
+    <link rel="stylesheet" href="/resources/css/index.css">
     <title>Panneau d'affichage</title>
 </head>
 <body class="bg-info" style="color: #dddddd">
@@ -26,7 +28,7 @@
             role : <security:authentication property="principal.authorities" />
         </security:authorize>
         <table id="panneau">
-            <thead>
+            <thead class="bg-dark text-light">
                 <tr>
                     <th>Message</th>
                     <th>Emetteur</th>
@@ -34,9 +36,9 @@
                     <th>Likes</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-black">
                 <c:forEach var="mes" items="${allMessages}">
-                    <tr>
+                    <tr id="message${mes.id}">
                         <td>
                             <div><b>${mes.title}</b></div>
                             <div>${mes.content}</div>
@@ -54,30 +56,15 @@
                         <td>
                             ${mes.createdAt}
                         </td>
-                        <td>
-                            <div>${mes.likes.size()}</div>
-                            <div><a onclick="likeMessage">liker</a></div>
+                        <td class="text-center">
+                            <div id="likecount${mes.id}">2</div>
+                            <div><button class="btn btn-dark" id="likebtn${mes.id}" onclick="likeMessage(${$mes.id})"><i class="far fa-thumbs-up fa-2x"></i></button></div>
+
                         </td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
-        <security:authorize access="hasRole('ADMIN')">
-            <p>I AM AN ADMIN</p>
-        </security:authorize>
-
-        <security:authorize access="hasRole('TEACHER')">
-            <p>I AM AN TEACHER</p>
-        </security:authorize>
-
-        <security:authorize access="hasRole('STUDENT')">
-            <p>I AM AN STUDENT</p>
-        </security:authorize>
-
-        <security:authorize access="hasRole('ADMINISTRATOR')">
-            <p>I AM AN ADMINISTRATOR</p>
-        </security:authorize>
-
     </div>
     <div id="footer">
         <%@include file="../../shared/footer.jsp"%>

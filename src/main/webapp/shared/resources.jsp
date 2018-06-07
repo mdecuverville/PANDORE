@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/resources/libs/jquery-ui/jquery-ui.min.css">
 
 <%-- Data-Tables --%>
-<link rel="stylesheet" src="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 <%-- Custom scripts --%>
