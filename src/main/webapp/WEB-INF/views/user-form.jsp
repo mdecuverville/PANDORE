@@ -40,10 +40,10 @@
                         <td><label for="roleName">Role :</label></td>
                         <td>
                             <form:select name="roleName" path="role">
-                                <form:option value="Administration" label="Administration" />
-                                <form:option value="teacher" label="professeur" />
-                                <form:option value="student" label="Etudiant" />
-                                <form:option value="Admin" label="Administrateur" />
+                                <form:option value="ROLE_ADMINISTRATION" label="Administration" />
+                                <form:option value="ROLE_TEACHER" label="professeur" />
+                                <form:option value="ROLE_STUDENT" label="Etudiant" />
+                                <form:option value="ROLE_ADMIN" label="Administrateur" />
                             </form:select>
                         </td>
                     </tr>

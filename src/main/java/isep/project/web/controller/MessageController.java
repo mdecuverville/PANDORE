@@ -19,6 +19,7 @@ public class MessageController {
 
     @Autowired
     private IMessageService messageService;
+
     @Autowired
     private IUserService userService;
 
