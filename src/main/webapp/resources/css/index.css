@@ -1,11 +1,5 @@
-#panneau{
-    color:#343a40;
-    width:100%;
-}
+
 [id^=likebtn]{
     color: #f4a000;
 }
 
-th, td, thead, tbody {
-    border: 2px solid #343a40;
-}

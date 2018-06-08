@@ -8,12 +8,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%String url = (request.getRequestURL()).toString();%>
+<%Authentication auth = SecurityContextHolder.getContext().getAuthentication();%>
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <%--logo--%>
-    <a class="navbar-brand" href="index.jsp"><img src="resources/logo_isep.svg" class="logo"></a>
+    <a class="navbar-brand" href="/homepage"><img src="/resources/logo_isep.svg" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,29 +23,34 @@
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item <%=url.endsWith("index.jsp") ? "active" : ""%>">
-                <a class="nav-link" href="index.jsp">Panneau d'Affichage</a>
+                <a class="nav-link" href="/homepage">Panneau d'Affichage</a>
             </li>
             <li class="nav-item <%=url.endsWith("formulaire.jsp") ? "active" : ""%>">
-                <a class="nav-link" href="formulaire.jsp">Nouveau message</a>
+                <a class="nav-link" href="/formulaire.jsp">Nouveau message</a>
             </li>
             <li class="nav-item <%=url.endsWith("messagerie.jsp") ? "active" : ""%>">
                 <a class="nav-link" href="#">Messagerie</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Users</a>
-                    <a class="dropdown-item" href="#">Categories</a>
-                    <a class="dropdown-item" href="#">UserGroups</a>
-                    <a class="dropdown-item" href="#">Messages</a>
-                    <a class="dropdown-item" href="#">Conversations</a>
-                </div>
-            </li>
+            <% if (auth.isAuthenticated()){%>
+                <security:authorize access="hasRole('ADMIN')">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Admin
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/user/list">Users</a>
+                            <a class="dropdown-item" href="/category/list">Categories</a>
+                            <a class="dropdown-item" href="/group/list">UserGroups</a>
+                            <a class="dropdown-item" href="/conversation/list">Conversations</a>
+                            <a class="dropdown-item" href="/message/list">Messages</a>
+                            <a class="dropdown-item" href="/like/list">Likes</a>
+                        </div>
+                    </li>
+                </security:authorize>
+            <%}%>
         </ul>
-        <%  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            if(!(auth instanceof AnonymousAuthenticationToken)) { %>
+
+        <%if(!(auth instanceof AnonymousAuthenticationToken)) { %>
         <div class="dropdown">
             <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% out.print(auth.getName()); %> &nbsp; <i class="far fa-user-circle"></i>

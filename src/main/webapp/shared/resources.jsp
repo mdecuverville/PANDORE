@@ -27,5 +27,6 @@
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-<%-- Custom scripts --%>
-<script type="text/javascript" src="/resources/scripts/adminUser-scripts.js"></script>
+<%-- Custom --%>
+<link rel="stylesheet" type="text/css" href="/resources/css/tables.css">
+<script type="text/javascript" src="/resources/scripts/list-tables.js"></script>

@@ -23,10 +23,6 @@
             <%@include file="../../shared/header.jsp"%>
         </div>
         <div id="body">
-            <security:authorize access="isAuthenticated()">
-                user : <security:authentication property="principal.username" />
-                role : <security:authentication property="principal.authorities" />
-            </security:authorize>
             <table id="panneau">
                 <thead class="bg-dark text-light">
                     <tr>

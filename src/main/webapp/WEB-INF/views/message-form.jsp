@@ -5,8 +5,7 @@
 <html>
 <head>
     <%@include file="../../shared/resources.jsp"%>
-    <script type="text/javascript" src="scripts/index.js"></script>
-    <title>Panneau d'affichage</title>
+    <title>add message</title>
 </head>
 <body class="bg-dark" style="color: #dddddd">
 <div id="container">
