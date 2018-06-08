@@ -35,43 +35,34 @@ public class HomeController {
         return "index";
     }
 
-
-
     @PostMapping("/likeMessage")
-    @ResponseBody
-    public int postResponseController(@RequestParam int messageId) {
+    public  @ResponseBody String likeMessageViaAjax(@RequestParam("id") String id) {
         try{
+            int messageId = Integer.parseInt(id);
             //get user and message
             //TODO get UserEntity from session
             UserEntity user = userService.getById(72);
-
             if (user == null){
-                return 1;
+                return "You must be logged in";
             }
-
-
             MessageEntity message = messageService.getById(messageId);
-
+            LikeEntity like = likeService.getLikeIfExists(user,message);
             //check if user is allowed to like
-            if(canLike(user, message)) {
+            if(like == null) {
                 // create like if allowed
-                LikeEntity like = new LikeEntity(false, message, user);
+                like = new LikeEntity(false, message, user);
                 likeService.save(like);
-                return 0;
+                return "success";
             }
-            return 1;
+            else{
+                likeService.delete(like.getId());
+                return "like removed successfully";
+            }
         }
         catch (Exception e){
-            e.printStackTrace();
+            return "error :" + e.getMessage();
         }
-        return 2;
+
     }
 
-    private boolean canLike(UserEntity user, MessageEntity message) {
-        List<LikeEntity> allLikes = likeService.getAll();
-        for (LikeEntity like : allLikes) {
-            if (like.getLikedBy()==user && like.getLikedMessage()==message) return false;
-        }
-        return true;
-    }
 }

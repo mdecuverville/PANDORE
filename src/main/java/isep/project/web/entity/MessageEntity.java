@@ -51,7 +51,7 @@ public class MessageEntity {
     @JoinColumn(name = "created_by")
     private UserEntity createdBy;
 
-    @OneToMany(mappedBy ="likedMessage", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy ="likedMessage", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<LikeEntity> likes;
 
     @ManyToOne(cascade = {
