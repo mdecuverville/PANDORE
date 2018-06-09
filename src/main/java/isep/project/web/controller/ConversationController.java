@@ -1,7 +1,9 @@
 package isep.project.web.controller;
 
 import isep.project.web.entity.ConversationEntity;
+import isep.project.web.entity.UserEntity;
 import isep.project.web.service.IConversationService;
+import isep.project.web.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +20,18 @@ public class ConversationController {
 
     @Autowired
     private IConversationService conversationService;
+    @Autowired
+    private IUserService userService;
 
     @GetMapping("/list")
     public String listAll(Model theModel) {
 
         List<ConversationEntity> conversationList = conversationService.getAll();
+        List<UserEntity> allUsers = userService.getAll();
 
         // set it as an attribute inside the Model
         theModel.addAttribute("conversations", conversationList);
+        theModel.addAttribute("allUsers", allUsers);
 
         return "list-conversations";
     }

@@ -15,7 +15,7 @@
         <div style="padding:15px">
             <a class="btn btn-success" href="/group/add">Nouveau Group</a>
         </div>
-        <table class="listTable">
+        <table class="listTable" >
             <thead>
                 <tr>
                     <th>id</th>
@@ -129,7 +129,7 @@
                         </td>
                         <td><%-- display the link for update --%>
                             <a href="${updateLink}" class="btn btn-info">Update</a>
-                            <a href="${deleteLink}" class="btn btn-info" onclick="if(!(confirm('Are you sure to delete this group ?'))) return false" >Delete</a>
+                            <a href="${deleteLink}" class="btn btn-danger" onclick="if(!(confirm('Are you sure to delete this group ?'))) return false" >Delete</a>
                         </td>
                     </tr>
                 </c:forEach>

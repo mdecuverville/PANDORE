@@ -31,8 +31,8 @@
                         <td>${likes.likedBy.firstName}</td>
                         <td>${likes.likedMessage.id} : ${likes.likedMessage.title}</td>
                         <td><%-- display the link for update --%>
-                            <a href="${updateLink}">Update</a> |
-                            <a href="${deleteLink}" onclick="if(!(confirm('Are you sure to delete this user ?'))) return false" >Delete</a>
+                            <a href="${updateLink}" class="btn btn-info">Update</a>
+                            <a href="${deleteLink}" class="btn btn-danger" onclick="if(!(confirm('Are you sure to delete this like ?'))) return false" >Delete</a>
                         </td>
                     </tr>
                 </c:forEach>

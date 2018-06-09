@@ -19,6 +19,7 @@
                 <tr>
                     <th>id</th>
                     <th>Name</th>
+                    <th>Messages</th>
                     <th></th>
                 </tr>
             </thead>
@@ -36,9 +37,54 @@
                     <tr>
                         <td>${conversation.id}</td>
                         <td>${conversation.conversationName}</td>
+                        <td>
+                            <a href="#usersModal${conversation.id}" data-toggle="modal" data-target="#usersModal${conversation.id}">see messages (${conversation.usersIn.size()})</a>
+                            <div class="modal fade" id="usersModal${conversation.id}" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"> ${conversation.conversationName} : members</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="memberTable" style="width:90%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>UserId</th>
+                                                        <th>email</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach var="usr" items="${conversation.usersIn}">
+                                                    <tr>
+                                                        <td>${usr.id}</td>
+                                                        <td>${usr.email}</td>
+                                                        <td><button class="btn btn-danger">Kick Out</button></td>
+                                                    </tr>
+                                                </c:forEach>
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <select>
+                                                            <c:forEach var="convMember" items="${allUsers}">
+                                                                <option value="${convMember.id}">${convMember.email}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                        <a href="#" class="btn btn-info">add new member</a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                         <td><%-- display the link for update --%>
-                            <a href="${updateLink}">Update</a> |
-                            <a href="${deleteLink}" onclick="if(!(confirm('Are you sure to delete this user ?'))) return false" >Delete</a>
+                            <a href="${updateLink}" class="btn btn-info">Update</a>
+                            <a href="${deleteLink}" class="btn btn-danger" onclick="if(!(confirm('Are you sure to delete this conversation ?'))) return false" >Delete</a>
                         </td>
                     </tr>
                 </c:forEach>
