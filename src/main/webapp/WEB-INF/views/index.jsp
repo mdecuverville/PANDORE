@@ -56,6 +56,7 @@
                                 <div id="likecount${mes.id}">${mes.likes.size()}</div>
                                 <div>
                                     <input type="hidden" class="messageId" value=" ${mes.id}">
+                                    <!--TODO add class liked if user has like this specific message-->
                                     <button class="btn btn-dark likebtn" id="likebtn${mes.id}"><i class="far fa-thumbs-up fa-2x"></i></button>
                                 </div>
 

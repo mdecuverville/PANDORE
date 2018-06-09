@@ -12,6 +12,9 @@
         <%@include file="../../shared/header.jsp"%>
     </div>
     <div id="body">
+        <div style="padding:15px">
+            <a class="btn btn-success" href="/user/add">Nouveau User</a>
+        </div>
         <table class="listTable">
             <tr>
                 <th>id</th>

@@ -12,6 +12,9 @@
         <%@include file="../../shared/header.jsp"%>
     </div>
     <div id="body">
+        <div style="padding:15px">
+            <a class="btn btn-success" href="#">Nouveau Like</a>
+        </div>
         <table class="listTable">
             <thead>
                 <tr>
@@ -26,7 +29,7 @@
                     <tr>
                         <td>${likes.id}</td>
                         <td>${likes.likedBy.firstName}</td>
-                        <td>${likes.likedMessage.title}</td>
+                        <td>${likes.likedMessage.id} : ${likes.likedMessage.title}</td>
                         <td><%-- display the link for update --%>
                             <a href="${updateLink}">Update</a> |
                             <a href="${deleteLink}" onclick="if(!(confirm('Are you sure to delete this user ?'))) return false" >Delete</a>

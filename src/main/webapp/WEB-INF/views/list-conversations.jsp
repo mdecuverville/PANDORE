@@ -11,6 +11,9 @@
         <%@include file="../../shared/header.jsp"%>
     </div>
     <div id="body">
+        <div style="padding:15px">
+            <a class="btn btn-success" href="/conversation/add">Nouvelle Conversation</a>
+        </div>
         <table class="listTable">
             <thead>
                 <tr>
@@ -40,7 +43,7 @@
                     </tr>
                 </c:forEach>
             </tbody>
-        </>
+        </table>
     </div>
     <div id="footer">
         <%@include file="../../shared/footer.jsp"%>

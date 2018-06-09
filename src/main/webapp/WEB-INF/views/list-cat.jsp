@@ -11,6 +11,9 @@
         <%@include file="../../shared/header.jsp"%>
     </div>
     <div id="body">
+        <div style="padding:15px">
+            <a class="btn btn-success" href="/category/add">Nouvelle Catégorie</a>
+        </div>
         <table class="listTable">
             <thead>
                 <tr>

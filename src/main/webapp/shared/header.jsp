@@ -13,7 +13,7 @@
 
 <%String url = (request.getRequestURL()).toString();%>
 <%Authentication auth = SecurityContextHolder.getContext().getAuthentication();%>
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <%--logo--%>
     <a class="navbar-brand" href="/homepage"><img src="/resources/logo_isep.svg" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
