@@ -54,6 +54,7 @@
                                                 <tr>
                                                     <th>groupId</th>
                                                     <th>groupName</th>
+                                                    <th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -61,10 +62,11 @@
                                                     <tr>
                                                         <td>${gr.id}</td>
                                                         <td>${gr.userGroupName}</td>
+                                                        <td><button class="btn btn-danger">Remove Group</button></td>
                                                     </tr>
                                                 </c:forEach>
                                                 <tr>
-                                                    <td colspan="2">
+                                                    <td colspan="3">
                                                         <select>
                                                             <c:forEach var="ugrp" items="${allGroups}">
                                                                 <option value="${ugrp.id}">${ugrp.userGroupName}</option>

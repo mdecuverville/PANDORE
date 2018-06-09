@@ -56,6 +56,7 @@
                                                     <tr>
                                                         <th>UserId</th>
                                                         <th>email</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -63,10 +64,11 @@
                                                         <tr>
                                                             <td>${membre.id}</td>
                                                             <td>${membre.email}</td>
+                                                            <td><button class="btn btn-danger">remove User</button></td>
                                                         </tr>
                                                     </c:forEach>
                                                     <tr>
-                                                        <td colspan="2">
+                                                        <td colspan="3">
                                                             <select>
                                                                 <c:forEach var="user" items="${users}">
                                                                     <option value="${user.id}">${user.email}</option>
@@ -101,6 +103,7 @@
                                                 <tr>
                                                     <th>CatId</th>
                                                     <th>catName</th>
+                                                    <th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -108,10 +111,11 @@
                                                     <tr>
                                                         <td>${cat.id}</td>
                                                         <td>${cat.categoryName}</td>
+                                                        <td><button class="btn btn-danger">remove category</button></td>
                                                     </tr>
                                                 </c:forEach>
                                                 <tr>
-                                                    <td colspan="2">
+                                                    <td colspan="3">
                                                         <select>
                                                             <c:forEach var="categ" items="${categories}">
                                                                 <option value="${categ.id}">${categ.categoryName}</option>

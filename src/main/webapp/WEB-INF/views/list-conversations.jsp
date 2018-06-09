@@ -19,7 +19,7 @@
                 <tr>
                     <th>id</th>
                     <th>Name</th>
-                    <th>Messages</th>
+                    <th>Members</th>
                     <th></th>
                 </tr>
             </thead>
@@ -38,7 +38,7 @@
                         <td>${conversation.id}</td>
                         <td>${conversation.conversationName}</td>
                         <td>
-                            <a href="#usersModal${conversation.id}" data-toggle="modal" data-target="#usersModal${conversation.id}">see messages (${conversation.usersIn.size()})</a>
+                            <a href="#usersModal${conversation.id}" data-toggle="modal" data-target="#usersModal${conversation.id}">see members (${conversation.usersIn.size()})</a>
                             <div class="modal fade" id="usersModal${conversation.id}" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
