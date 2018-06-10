@@ -24,8 +24,8 @@
             <li class="nav-item <%=url.endsWith("/") ? "active" : ""%>">
                 <a class="nav-link" href="${pageContext.request.contextPath}/">Panneau d'Affichage</a>
             </li>
-            <li class="nav-item <%=url.endsWith("/message/add") ? "active" : ""%>">
-                <a class="nav-link" href="${pageContext.request.contextPath}/message/add">Nouveau message</a>
+            <li class="nav-item <%=url.endsWith("/send/add") ? "active" : ""%>">
+                <a class="nav-link" href="${pageContext.request.contextPath}/send/add">Nouveau message</a>
             </li>
             <%--<li class="nav-item <%=url.endsWith("messagerie.jsp") ? "active" : ""%>">--%>
                 <%--<a class="nav-link" href="#">Messagerie</a>--%>

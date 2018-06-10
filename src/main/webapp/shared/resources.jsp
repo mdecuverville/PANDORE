@@ -15,15 +15,15 @@
 
 <%-- jQuery + plugins --%>
 <script src="https://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/libs/jquery-fulltable/jquery.fulltable.js"/>
-<script src="${pageContext.request.contextPath}/resources/libs/jquery-ui/jquery-ui.min.js"/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/libs/jquery-fulltable/jquery.fulltable.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/libs/jquery-ui/jquery-ui.min.js"></script>
 
 <%-- Data-Tables --%>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" ></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/libs/jquery-fulltable/jquery.fulltable.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/libs/jquery-ui/jquery-ui.min.css" />
-<link rel="stylesheet" src="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
 <%-- Custom scripts --%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/adminUser-scripts.js"/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/adminUser-scripts.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/sitestyle.css" />

@@ -20,29 +20,20 @@
         <%@include file="shared/header.jsp"%>
     </div>
     <div id="body">
-        <security:authorize access="isAuthenticated()">
-            user : <security:authentication property="principal.username" />
-            role : <security:authentication property="principal.authorities" />
-        </security:authorize>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta enim tincidunt, ultricies magna id, ullamcorper eros. Phasellus vitae libero rutrum nibh fermentum cursus a lobortis ante. Pellentesque accumsan, diam sit amet imperdiet tempus, lorem risus fringilla ex, eget tempor justo ligula a diam. Quisque at mi purus. Integer mattis bibendum purus et feugiat. Mauris a ante bibendum, ullamcorper diam ut, consequat ante. Etiam sagittis id purus aliquam auctor.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta enim tincidunt, ultricies magna id, ullamcorper eros. Phasellus vitae libero rutrum nibh fermentum cursus a lobortis ante. Pellentesque accumsan, diam sit amet imperdiet tempus, lorem risus fringilla ex, eget tempor justo ligula a diam. Quisque at mi purus. Integer mattis bibendum purus et feugiat. Mauris a ante bibendum, ullamcorper diam ut, consequat ante. Etiam sagittis id purus aliquam auctor.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta enim tincidunt, ultricies magna id, ullamcorper eros. Phasellus vitae libero rutrum nibh fermentum cursus a lobortis ante. Pellentesque accumsan, diam sit amet imperdiet tempus, lorem risus fringilla ex, eget tempor justo ligula a diam. Quisque at mi purus. Integer mattis bibendum purus et feugiat. Mauris a ante bibendum, ullamcorper diam ut, consequat ante. Etiam sagittis id purus aliquam auctor.</p>
+        <h2 class="pagetitle">Panneau d'affichage</h2>
 
-        <security:authorize access="hasRole('ADMIN')">
-            <p>I AM AN ADMIN</p>
-        </security:authorize>
+        <select class="custom-select col-12 col-md-3">
+            <option selected disabled>Catégories</option>
+            <option>Enseignement</option>
+            <option>Parcours de Formation</option>
+            <option>Matériel d'entretien/Salle</option>
+            <option>Autres</option>
+        </select>
 
-        <security:authorize access="hasRole('TEACHER')">
-            <p>I AM AN TEACHER</p>
-        </security:authorize>
 
-        <security:authorize access="hasRole('STUDENT')">
-            <p>I AM AN STUDENT</p>
-        </security:authorize>
+        <span class="filtre"><span class="fas fa-filter"></span>&nbsp;<input type="text" placeholder="Filtre..."/></span>
 
-        <security:authorize access="hasRole('ADMINISTRATOR')">
-            <p>I AM AN ADMINISTRATOR</p>
-        </security:authorize>
+        <p>Ici se situera le tableau du panneau d'affichage</p>
 
     </div>
     <div id="footer">
