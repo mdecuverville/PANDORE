@@ -59,7 +59,7 @@ public class MessageFormController {
 
             int categoryId = messageForm.getCategoryId();
 
-            CategoryEntity category = categoryService.getEagerById(categoryId);
+            CategoryEntity category = categoryService.getById(categoryId);
 
             newConversation.addUser(loggedUser);
 
