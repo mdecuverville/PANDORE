@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,6 +21,19 @@ public class LikeService implements ILikeService{
     @Transactional
     public LikeEntity getById(int id){
         return dao.getLikeById(id);
+    }
+
+    @Override
+    public List<LikeEntity> getByUserId(int userId) {
+        List<LikeEntity> likes = getAll();
+        List<LikeEntity> userlikes = new ArrayList<>();
+        for(LikeEntity like : likes){
+            if (like.getLikedBy().getId() == userId){
+                userlikes.add(like);
+            }
+        }
+
+        return null;
     }
 
     @Override

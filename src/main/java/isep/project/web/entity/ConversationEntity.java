@@ -58,7 +58,7 @@ public class ConversationEntity {
     )
     private List<UserEntity> usersIn;
 
-    @OneToMany(mappedBy ="conversationIn", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy ="conversationIn", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<MessageEntity> messages;
 
     public ConversationEntity() {
