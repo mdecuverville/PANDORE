@@ -259,7 +259,7 @@ public class UserEntity {
         return Objects.hash(id, firstName, lastName, passwordHash, email, role, conversationsOwned, likes, messages, conversationsJoined, usersGroups);
     }
 
-    public String getLoggedUser() {
+    public static String getLoggedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             String currentUserName = authentication.getName();
