@@ -42,7 +42,6 @@
           <element id="library" level="project" name="Maven: org.hibernate.validator:hibernate-validator:6.0.7.Final" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
           <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.3.0" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.5" />
         </element>
       </element>
       <element id="directory" name="META-INF">
