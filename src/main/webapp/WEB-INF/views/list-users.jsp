@@ -1,15 +1,16 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>
 <head>
-    <%@include file="../../shared/resources.jsp"%>
-    <title>Users</title>
+    <jsp:include page="${pageContext.request.contextPath}/shared/resources.jsp" flush="true" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/in"></script>
+    <title>Panneau d'affichage</title>
 </head>
 <body class="bg-info" style="color: #dddddd">
 <div id="container">
     <div id="header">
-        <%@include file="../../shared/header.jsp"%>
+        <jsp:include page="${pageContext.request.contextPath}/shared/header.jsp" flush="true" />
     </div>
     <div id="body">
         <div style="padding:15px">
@@ -72,7 +73,7 @@
         </table>
     </div>
     <div id="footer">
-        <%@include file="../../shared/footer.jsp"%>
+        <jsp:include page="${pageContext.request.contextPath}/shared/footer.jsp" flush="true" />
     </div>
 </div>
 </body>

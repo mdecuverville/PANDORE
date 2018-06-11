@@ -33,6 +33,12 @@ public class UserService implements IUserService {
 
     @Override
     @Transactional
+    public UserEntity getByEmail(String email) {
+        return userDAO.getUser(email);
+    }
+
+    @Override
+    @Transactional
     public void save(UserEntity theUser) {
         userDAO.saveUser(theUser);
     }

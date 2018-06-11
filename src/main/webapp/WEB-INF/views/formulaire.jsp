@@ -8,14 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="shared/resources.jsp"%>
+    <%@include file="../../shared/resources.jsp"%>
     <script type="text/javascript" src="scripts/index.js"></script>
     <title>Formulaire</title>
 </head>
 <body class="bg-info" style="color: #dddddd">
 <div id="container">
     <div id="header">
-        <%@include file="shared/header.jsp"%>
+        <%@include file="../../shared/header.jsp"%>
     </div>
     <div id="body">
 
@@ -49,7 +49,7 @@
 
     </div>
     <div id="footer">
-        <%@include file="shared/footer.jsp"%>
+        <%@include file="../../shared/footer.jsp"%>
     </div>
 </div>
 </body>

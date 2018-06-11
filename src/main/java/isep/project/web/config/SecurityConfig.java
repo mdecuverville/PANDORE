@@ -1,5 +1,6 @@
 package isep.project.web.config;
 
+import isep.project.web.service.UserAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,7 +8,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 
@@ -21,29 +23,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private DataSource securityDataSource;
 
-	@Override
+	@Autowired
+	private UserAuthService userAuthService;
+
+	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-		// use jdbc authentication ... oh yeah!!!
-
-//		auth.jdbcAuthentication().dataSource(securityDataSource);
-
-		auth.inMemoryAuthentication().withUser("user1").password("test").roles("ADMIN");
-		auth.inMemoryAuthentication().withUser("user2").password("test").roles("TEACHER");
-		auth.inMemoryAuthentication().withUser("user3").password("test").roles("STUDENT");
-		auth.inMemoryAuthentication().withUser("user4").password("test").roles("ADMINISTRATOR");
-
-
+		auth.userDetailsService(userAuthService).passwordEncoder(passwordEncoder());
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-				.antMatchers("/administration/**").hasAnyRole("ADMINISTRATOR", "TEACHER", "ADMIN")
-				.antMatchers("/student/**").hasAnyRole( "STUDENT", "ADMIN")
-				.antMatchers("/administrator/**").hasRole( "ADMIN")
-				.antMatchers("/*/add").hasRole( "ADMIN")
+				.antMatchers("/member/**").hasAnyRole( "ADMINISTRATOR", "TEACHER", "STUDENT", "ADMIN")
+				.antMatchers("/admin/**").hasRole( "ADMIN")
 				.antMatchers("/resources/**").permitAll()
 				.antMatchers("/").permitAll()
 				.and()
@@ -58,7 +51,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll()
 				.and()
 				.exceptionHandling().accessDeniedPage("/access-denied");
-
 	}
 
 	@Bean
@@ -72,14 +64,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 
-    @SuppressWarnings("deprecation")
-    @Bean
-    public static NoOpPasswordEncoder passwordEncoder() {
-        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
-    }
-
-
-		
+	@SuppressWarnings("deprecation")
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }
 
 

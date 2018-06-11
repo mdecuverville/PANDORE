@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public class UserRepository implements UserDAO {
     //  Need to inject the session factory
     @Autowired
     private SessionFactory sessionFactory;
+
+    @Autowired
+    private HibernateTemplate hibernateTemplate;
 
     @Override
     //  @Transactional  -> we will remove it here since we added a isep.project.web.service which will delegate the DAO and manage the transaction (see in CustomerService)
@@ -44,6 +48,18 @@ public class UserRepository implements UserDAO {
     public UserEntity getUser(int theId) {
         Session currentSession = sessionFactory.getCurrentSession();
         return currentSession.get(UserEntity.class, theId);
+    }
+
+    public UserEntity getUser(String email) {
+
+        UserEntity user = new UserEntity();
+
+        List<?> userList = hibernateTemplate.find("FROM UserEntity WHERE email=?",
+                email);
+        if(!userList.isEmpty())
+            user = (UserEntity) userList.get(0);
+
+        return user;
     }
 
     @Override
