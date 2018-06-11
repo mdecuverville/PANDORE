@@ -29,4 +29,5 @@
 
 <%-- Custom scripts --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/adminUser-scripts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/index.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/sitestyle.css" />
