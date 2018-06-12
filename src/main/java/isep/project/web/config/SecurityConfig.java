@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/member/**").hasAnyRole( "ADMINISTRATOR", "TEACHER", "STUDENT", "ADMIN")
 				.antMatchers("/admin/**").hasRole( "ADMIN")
 				.antMatchers("/resources/**").permitAll()
+				.antMatchers("/send/**").authenticated()
 				.antMatchers("/").permitAll()
 				.and()
 				.httpBasic()
@@ -48,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginProcessingUrl("/authenticateTheUser")
 				.permitAll()
 				.and()
-				.logout()
+				.logout().logoutSuccessUrl("/")
 				.permitAll()
 				.and()
 				.exceptionHandling().accessDeniedPage("/access-denied");
