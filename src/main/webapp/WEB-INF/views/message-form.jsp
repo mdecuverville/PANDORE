@@ -1,22 +1,18 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Anne
-  Date: 22/05/2018
-  Time: 13:37
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
-    <%@include file="../../shared/resources.jsp"%>
-    <title>Formulaire</title>
+    <jsp:include page="${pageContext.request.contextPath}/shared/resources.jsp" flush="true" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/in"></script>
+    <title>Panneau d'affichage</title>
 </head>
 <body class="bg-info" style="color: #dddddd">
 <div id="container">
     <div id="header">
-        <%@include file="../../shared/header.jsp"%>
+        <jsp:include page="${pageContext.request.contextPath}/shared/header.jsp" flush="true" />
     </div>
+
     <div id="body">
 
         <h2 class="pagetitle">Nouveau Message</h2>
@@ -33,7 +29,7 @@
 
             <div class="input-group form-group">
                 <span><input id="private" name="privacy" type="checkbox"/><label for="private">&nbsp;Privé</label>&nbsp;<span class="fas fa-info-circle"
-                                                                                                               id="infos" data-toggle="tooltip" data-placement="right" title="Ce paramètre est public par défaut"></span></span>
+                                                                                                                              id="infos" data-toggle="tooltip" data-placement="right" title="Ce paramètre est public par défaut"></span></span>
             </div>
 
             <div class="input-group form-group">
@@ -56,8 +52,7 @@
     </div>
 
     <div id="footer">
-        <%@include file="../../shared/footer.jsp"%>
+        <jsp:include page="${pageContext.request.contextPath}/shared/resources.jsp" flush="true" />
     </div>
 </div>
 </body>
-</html>

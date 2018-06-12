@@ -24,6 +24,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/libs/jquery-ui/jquery-ui.min.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
+<%-- Tynimce --%>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+
 <%-- Custom scripts --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/adminUser-scripts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/index.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/sitestyle.css" />
