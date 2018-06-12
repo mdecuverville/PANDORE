@@ -39,7 +39,7 @@
                         <th>Message</th>
                         <th>Emetteur</th>
                         <th>Date/heure</th>
-                        <th>Likes</th>
+                            <th>Likes</th>
                     </tr>
                 </thead>
                 <tbody class="text-black">
@@ -67,13 +67,14 @@
                                 <fmt:formatDate type = "both" dateStyle="short" timeStyle="short" value = "${mes.key.createdAt}" />
                             </td>
                             <td class="text-center">
-                                <div id="likecount${mes.key.id}">${mes.key.likes.size()}</div>
-                                <div>
-                                    <input type="hidden" class="messageId" value=" ${mes.key.id}">
-                                    <%%>
-                                    <a  href="${likeLink} " class="btn btn-dark likebtn liked" id="likebtn${mes.key.id}"><i class="far fa-thumbs-up fa-2x"></i></a>
-                                </div>
+                                    <div id="likecount${mes.key.id}">${mes.key.likes.size()}</div>
+                                    <div>
+                                        <input type="hidden" class="messageId" value=" ${mes.key.id}">
+                                        <%%>
+                                        <a  href="${likeLink} " class="btn btn-dark likebtn liked" id="likebtn${mes.key.id}"><i class="far fa-thumbs-up fa-2x"></i></a>
+                                    </div>
                             </td>
+
                         </tr>
                     </c:forEach>
                 </tbody>

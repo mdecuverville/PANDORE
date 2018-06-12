@@ -53,7 +53,7 @@
         </ul>
 
         <%if(!(auth instanceof AnonymousAuthenticationToken)) { %>
-        <div class="dropdown">
+        <div class="dropdown float-right">
             <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% out.print(auth.getName()); %> &nbsp; <i class="far fa-user-circle"></i>
             </button>
@@ -67,7 +67,7 @@
             </div>
         </div>
         <% } else { %>
-        <a href="${pageContext.request.contextPath}/login" class="btn btn-primary">
+        <a href="${pageContext.request.contextPath}/login" class="btn btn-primary float-right">
             <span class="fas fa-sign-in-alt" aria-hidden="true"></span>
             Connexion
         </a>
