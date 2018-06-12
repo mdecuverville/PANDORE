@@ -44,6 +44,9 @@
                 </thead>
                 <tbody class="text-black">
                     <c:forEach var="mes" items="${messagesAndlikes}">
+                        <c:url var="likeLink" value="/index/likeMessage" >
+                            <c:param name="mId" value="${mes.key.id}" />
+                        </c:url>
                         <tr id="message${mes.key.id}">
                             <td>${mes.key.id}</td>
                             <td>
@@ -67,18 +70,9 @@
                                 <div id="likecount${mes.key.id}">${mes.key.likes.size()}</div>
                                 <div>
                                     <input type="hidden" class="messageId" value=" ${mes.key.id}">
-                                    <c:set var="isLiked" value="${mes.value}" />
-                                    <c:choose>
-                                        <c:when test="${mes.value}">
-                                            <button class="btn btn-dark likebtn liked" id="likebtn${mes.key.id}"><i class="far fa-thumbs-up fa-2x"></i></button>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <button class="btn btn-dark likebtn" id="likebtn${mes.key.id}"><i class="far fa-thumbs-up fa-2x"></i></button>
-                                        </c:otherwise>
-                                    </c:choose>
-
+                                    <%%>
+                                    <a  href="${likeLink} " class="btn btn-dark likebtn liked" id="likebtn${mes.key.id}"><i class="far fa-thumbs-up fa-2x"></i></a>
                                 </div>
-
                             </td>
                         </tr>
                     </c:forEach>
@@ -89,55 +83,5 @@
             <%@include file="../../shared/footer.jsp"%>
         </div>
     </div>
-
-    <%--<script>--%>
-        <%--$(document).ready(function($) {--%>
-
-            <%--let likebtns = $(".likebtn");--%>
-            <%--likebtns.click(function(){--%>
-                <%--let mId = parseInt($(this).prev().val().replace(/\s/g,''));--%>
-                <%--console.log("trying to like message "+mId);--%>
-                <%--likeAjax(mId);--%>
-            <%--});--%>
-
-        <%--});--%>
-
-        <%--function likeAjax(mId) {--%>
-
-            <%--var data = {}--%>
-            <%--data["id"] = mId;--%>
-
-            <%--$.ajax({--%>
-                <%--type : "POST",--%>
-                <%--headers: {--%>
-                    <%--'Accept': 'application/json',--%>
-                    <%--'Content-Type': 'application/json'--%>
-                <%--},--%>
-                <%--url : "${home}test/test",--%>
-                <%--data : JSON.stringify(data),--%>
-                <%--dataType : 'json',--%>
-                <%--timeout : 100000,--%>
-                <%--success : function(data) {--%>
-                    <%--console.log("SUCCESS: ", data);--%>
-                    <%--display(data);--%>
-                <%--},--%>
-                <%--error : function(e) {--%>
-                    <%--console.log("ERROR: ", e);--%>
-                    <%--display(e);--%>
-                <%--},--%>
-                <%--done : function(e) {--%>
-                    <%--console.log("DONE");--%>
-                <%--}--%>
-            <%--});--%>
-
-        <%--}--%>
-
-
-        <%--function display(data) {--%>
-            <%--var json = "<h4>Ajax Response</h4><pre>"--%>
-                <%--+ JSON.stringify(data, null, 4) + "</pre>";--%>
-            <%--$('#feedback').html(json);--%>
-        <%--}--%>
-    <%--</script>--%>
 </body>
 </html>

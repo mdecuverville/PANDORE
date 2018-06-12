@@ -26,9 +26,11 @@
             <li class="nav-item <%=url.endsWith("/") ? "active" : ""%>">
                 <a class="nav-link" href="${pageContext.request.contextPath}/">Panneau d'Affichage</a>
             </li>
-            <li class="nav-item <%=url.endsWith("/send/add") ? "active" : ""%>">
-                <a class="nav-link" href="${pageContext.request.contextPath}/send/add">Nouveau message</a>
-            </li>
+            <security:authorize access="isAuthenticated()">
+                <li class="nav-item <%=url.endsWith("/send/add") ? "active" : ""%>">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/send/add">Nouveau message</a>
+                </li>
+            </security:authorize>
             <%--<li class="nav-item <%=url.endsWith("messagerie.jsp") ? "active" : ""%>">--%>
                 <%--<a class="nav-link" href="#">Messagerie</a>--%>
             <%--</li>--%>
@@ -43,7 +45,7 @@
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/category/list">Categories</a>
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/group/list">UserGroups</a>
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/message/list">Messages</a>
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/conversation/list">Conversations</a>
+                        <%--<a class="dropdown-item" href="${pageContext.request.contextPath}/conversation/list">Conversations</a>--%>
                     </div>
                 </security:authorize>
 
@@ -65,7 +67,7 @@
             </div>
         </div>
         <% } else { %>
-        <a href="${pageContext.request.contextPath}/showMyLoginPage" class="btn btn-primary">
+        <a href="${pageContext.request.contextPath}/login" class="btn btn-primary">
             <span class="fas fa-sign-in-alt" aria-hidden="true"></span>
             Connexion
         </a>

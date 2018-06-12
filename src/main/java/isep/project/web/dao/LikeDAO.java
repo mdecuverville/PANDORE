@@ -12,4 +12,6 @@ public interface LikeDAO {
     void saveLike(LikeEntity like);
 
     void deleteLike(int theId);
+
+    LikeEntity getByUserAndMessage(int userId, int messageId);
 }

@@ -57,10 +57,6 @@ public class LikeService implements ILikeService{
     @Override
     @Transactional
     public LikeEntity getLikeIfExists(UserEntity user, MessageEntity message) {
-        List<LikeEntity> allLikes = getAll();
-        for (LikeEntity like : allLikes) {
-            if (like.getLikedBy()==user && like.getLikedMessage()==message) return like;
-        }
-        return null;
+        return dao.getByUserAndMessage(user.getId(), message.getId());
     }
 }

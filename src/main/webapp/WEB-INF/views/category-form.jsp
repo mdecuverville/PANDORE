@@ -16,7 +16,7 @@
         <div >
             <h3>Save category</h3>
             <form:form action="save" modelAttribute="category" method="post" >
-                <table>
+                <table class="table">
                     <tbody>
                     <form:hidden path="id" />
                     <tr>
