@@ -1,7 +1,10 @@
 package isep.project.web.controller;
 
 import isep.project.web.entity.CategoryEntity;
+import isep.project.web.entity.UserGroupEntity;
 import isep.project.web.service.ICategoryService;
+import isep.project.web.service.IUserGroupService;
+import isep.project.web.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +21,17 @@ public class CategoryController {
 
     @Autowired
     private ICategoryService categoryService;
+    @Autowired
+    private IUserGroupService userGroupService;
 
     @GetMapping("/list")
     public String listAll(Model theModel) {
 
         List<CategoryEntity> catList = categoryService.getAll();
-
+        List<UserGroupEntity> allGroups = userGroupService.getAll();
         // set it as an attribute inside the Model
         theModel.addAttribute("categories", catList);
+        theModel.addAttribute("allGroups", allGroups);
 
         return "list-cat";
     }

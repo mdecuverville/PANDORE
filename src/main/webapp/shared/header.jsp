@@ -9,13 +9,14 @@
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%String url = (request.getRequestURL()).toString();%>
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+<%Authentication auth = SecurityContextHolder.getContext().getAuthentication();%>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <%--logo--%>
     <a class="navbar-brand" href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/logo_isep.svg" class="logo"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -24,9 +25,11 @@
             <li class="nav-item <%=url.endsWith("/") ? "active" : ""%>">
                 <a class="nav-link" href="${pageContext.request.contextPath}/">Panneau d'Affichage</a>
             </li>
-            <li class="nav-item <%=url.endsWith("/send/add") ? "active" : ""%>">
-                <a class="nav-link" href="${pageContext.request.contextPath}/send/add">Nouveau message</a>
-            </li>
+            <security:authorize access="isAuthenticated()">
+                <li class="nav-item <%=url.endsWith("/send/add") ? "active" : ""%>">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/send/add">Nouveau message</a>
+                </li>
+            </security:authorize>
             <%--<li class="nav-item <%=url.endsWith("messagerie.jsp") ? "active" : ""%>">--%>
                 <%--<a class="nav-link" href="#">Messagerie</a>--%>
             <%--</li>--%>
@@ -41,15 +44,15 @@
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/category/list">Categories</a>
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/group/list">UserGroups</a>
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/message/list">Messages</a>
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/conversation/list">Conversations</a>
+                        <%--<a class="dropdown-item" href="${pageContext.request.contextPath}/conversation/list">Conversations</a>--%>
                     </div>
                 </security:authorize>
 
             </li>
         </ul>
-        <%  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            if(!(auth instanceof AnonymousAuthenticationToken)) { %>
-        <div class="dropdown">
+
+        <%if(!(auth instanceof AnonymousAuthenticationToken)) { %>
+        <div class="dropdown float-right">
             <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% out.print(auth.getName()); %> &nbsp; <i class="far fa-user-circle"></i>
             </button>
@@ -63,7 +66,7 @@
             </div>
         </div>
         <% } else { %>
-        <a href="${pageContext.request.contextPath}/login" class="btn btn-primary">
+        <a href="${pageContext.request.contextPath}/login" class="btn btn-primary float-right">
             <span class="fas fa-sign-in-alt" aria-hidden="true"></span>
             Connexion
         </a>

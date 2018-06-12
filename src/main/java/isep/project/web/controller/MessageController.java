@@ -44,7 +44,7 @@ public class MessageController {
     @PostMapping("/save")
     public String save(@ModelAttribute("message") MessageEntity theMessage) {
 
-//        See if the message if the first of a conversation
+//        See if the message is the first of a conversation
 //        if (theMessage.getType() == "FIRST") {
 //            ConversationEntity newConversation = new ConversationEntity();
 //            newConversation.setConversationName(theMessage.getTitle());

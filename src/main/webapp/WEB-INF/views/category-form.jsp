@@ -5,10 +5,9 @@
 <html>
 <head>
     <%@include file="../../shared/resources.jsp"%>
-    <script type="text/javascript" src="scripts/index.js"></script>
-    <title>Panneau d'affichage</title>
+    <title>add category</title>
 </head>
-<body class="bg-dark" style="color: #dddddd">
+<body class="bg-info" style="color: #dddddd">
 <div id="container">
     <div id="header">
         <%@include file="../../shared/header.jsp"%>
@@ -17,7 +16,7 @@
         <div >
             <h3>Save category</h3>
             <form:form action="save" modelAttribute="category" method="post" >
-                <table>
+                <table class="table">
                     <tbody>
                     <form:hidden path="id" />
                     <tr>

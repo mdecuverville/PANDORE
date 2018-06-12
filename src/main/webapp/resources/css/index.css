@@ -1,4 +1,9 @@
 
+
+.likebtn {
+    color:white;
+}
+
 [id^=likebtn].liked{
     color: #f4a000;
 }

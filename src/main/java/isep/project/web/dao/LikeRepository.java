@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
 public class LikeRepository implements LikeDAO {
     @Autowired
     SessionFactory sessionFactory;
+    @Autowired
+    private HibernateTemplate hibernateTemplate;
 
     @Override
     public List<LikeEntity> getAllLikese(){
@@ -39,4 +42,14 @@ public class LikeRepository implements LikeDAO {
         Session s = sessionFactory.getCurrentSession();
         s.delete(getLikeById(theId));
     }
+
+    @Override
+    public LikeEntity getByUserAndMessage(int userId, int messageId){
+        Session s = sessionFactory.getCurrentSession();
+        List<?> likeList = hibernateTemplate.find("FROM LikeEntity WHERE likedBy=? AND likedMessage=?",userId,messageId);
+
+        if(likeList.size()>0) return (LikeEntity) likeList.get(0);
+        return null;
+    }
+
 }

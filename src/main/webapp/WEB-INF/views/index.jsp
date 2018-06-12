@@ -12,6 +12,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<c:url var="home" value="/" scope="request" />
+
+
 <html>
 <head>
     <meta name="_csrf" content="${_csrf.token}"/>
@@ -36,47 +39,42 @@
                         <th>Message</th>
                         <th>Emetteur</th>
                         <th>Date/heure</th>
-                        <%--<th>Likes</th>--%>
+                            <th>Likes</th>
                     </tr>
                 </thead>
                 <tbody class="text-black">
-                    <c:forEach var="conv" items="${convIdAndMessages}">
-                        <tr id="message${conv.key}">
-                            <td>${conv.key}</td>
+                    <c:forEach var="mes" items="${messagesAndlikes}">
+                        <c:url var="likeLink" value="/index/likeMessage" >
+                            <c:param name="mId" value="${mes.key.id}" />
+                        </c:url>
+                        <tr id="message${mes.key.id}">
+                            <td>${mes.key.id}</td>
                             <td>
-                                <div><b><a href="/send/add/${conv.key}">${conv.value.title}</a></b></div>
-                                <div>${conv.value.content}</div>
+                                <div><b>${mes.key.title}</b></div>
+                                <div>${mes.key.content}</div>
                             </td>
                             <td>
                                 <c:choose>
-                                    <c:when test="${conv.value.anonymous}">
+                                    <c:when test="${mes.key.anonymous}">
                                         anonyme
                                     </c:when>
                                     <c:otherwise>
-                                        ${conv.value.createdBy.firstName} ${conv.value.createdBy.lastName}
+                                        ${mes.key.createdBy.firstName} ${mes.key.createdBy.lastName}
                                     </c:otherwise>
                                 </c:choose>
                             </td>
                             <td>
-                                <fmt:formatDate type = "both" dateStyle="short" timeStyle="short" value = "${conv.value.createdAt}" />
+                                <fmt:formatDate type = "both" dateStyle="short" timeStyle="short" value = "${mes.key.createdAt}" />
                             </td>
-                            <%--<td class="text-center">--%>
-                                <%--<div id="likecount${mes.key.id}">${mes.key.likes.size()}</div>--%>
-                                <%--<div>--%>
-                                    <%--<input type="hidden" class="messageId" value=" ${mes.key.id}">--%>
-                                    <%--<c:set var="isLiked" value="${mes.value}" />--%>
-                                    <%--<c:choose>--%>
-                                        <%--<c:when test="${mes.value}">--%>
-                                            <%--<button class="btn btn-dark likebtn liked" id="likebtn${mes.key.id}"><i class="far fa-thumbs-up fa-2x"></i></button>--%>
-                                        <%--</c:when>--%>
-                                        <%--<c:otherwise>--%>
-                                            <%--<button class="btn btn-dark likebtn" id="likebtn${mes.key.id}"><i class="far fa-thumbs-up fa-2x"></i></button>--%>
-                                        <%--</c:otherwise>--%>
-                                    <%--</c:choose>--%>
+                            <td class="text-center">
+                                    <div id="likecount${mes.key.id}">${mes.key.likes.size()}</div>
+                                    <div>
+                                        <input type="hidden" class="messageId" value=" ${mes.key.id}">
+                                        <%%>
+                                        <a  href="${likeLink} " class="btn btn-dark likebtn liked" id="likebtn${mes.key.id}"><i class="far fa-thumbs-up fa-2x"></i></a>
+                                    </div>
+                            </td>
 
-                                <%--</div>--%>
-
-                            <%--</td>--%>
                         </tr>
                     </c:forEach>
                 </tbody>
