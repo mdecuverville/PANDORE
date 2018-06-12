@@ -1,9 +1,9 @@
 package isep.project.web.controller;
 
-import isep.project.web.entity.ConversationEntity;
-import isep.project.web.entity.LikeEntity;
-import isep.project.web.entity.MessageEntity;
-import isep.project.web.entity.UserEntity;
+import com.fasterxml.jackson.annotation.JsonView;
+import isep.project.web.entity.*;
+import isep.project.web.jsonview.AjaxRequestBody;
+import isep.project.web.jsonview.Views;
 import isep.project.web.service.IConversationService;
 import isep.project.web.service.ILikeService;
 import isep.project.web.service.IMessageService;
@@ -69,26 +69,50 @@ public class HomeController {
     }
 
 
-    private class AjaxRequestBody{
-        int id;
+//    private class AjaxRequestBody{
+//        int id;
+//    }
+
+    @JsonView(Views.Public.class)
+    @RequestMapping(value = "/test/test")
+    public AjaxResponseBody getSearchResultViaAjax(@RequestBody AjaxRequestBody requestBody) {
+
+        AjaxResponseBody result = new AjaxResponseBody();
+
+        System.out.println(requestBody.getId());
+
+        if (requestBody.getId() != null) {
+
+                result.setCode("200");
+                result.setMsg("");
+                result.setResult("ca marche : " + requestBody.getId());
+
+
+        } else {
+            result.setCode("400");
+            result.setMsg("Search criteria is empty!");
+        }
+
+        //AjaxResponseBody will be converted into json format and send back to client.
+        return result;
+
     }
 
-    @RequestMapping(value = "/likeMessage2", method = RequestMethod.POST, consumes = "application/json" , produces = MediaType. APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/likeMessage", method = RequestMethod.POST, consumes = "application/json" , produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    Integer newProductCategory(HttpServletRequest request, @RequestBody AjaxRequestBody arb){
-        int result = 0;
+    Integer likeHandle(HttpServletRequest request, @RequestBody AjaxRequestBody arb, Authentication authentication){
+        int result;
+        System.out.println("hello");
+
         try{
 
-            //get user and message
-            //String usermail = UserEntity.getLoggedUser();
-            //UserEntity user = userService.getByEmail(uesrmail);
+            // Get the usermail from the sesssion Auth
+            authentication.getPrincipal();
 
-            //for now lets use this one
-            UserEntity user = userService.getById(72);
-            if (user == null){
-                result =1;//"You must be logged in";
-            }
-            MessageEntity message = messageService.getById(arb.id);
+            // Get the user from the database
+            UserEntity user = userService.getByEmail(authentication.getName());
+
+            MessageEntity message = messageService.getById(Integer.valueOf(arb.getId()));
             LikeEntity like = likeService.getLikeIfExists(user,message);
 
             //check if user is allowed to like
@@ -105,7 +129,7 @@ public class HomeController {
             }
         }
         catch (Exception e){
-            result = 4;//"error :" + e.getMessage();
+            result = 4; //"error :" + e.getMessage();
         }
         return result;
     }

@@ -27,8 +27,7 @@
             <tbody>
                 <c:forEach var="message" items="${messages}" >
                     <%--Link for updates--%>
-                    <c:url var="updateLink" value="/message/update" >
-                        <c:param name="messageId" value="${message.id}" />
+                    <c:url var="updateLink" value="/send/save/${message.id}" >
                     </c:url>
 
                     <%--Link for deletes--%>

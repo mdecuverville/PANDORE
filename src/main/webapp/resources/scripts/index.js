@@ -38,16 +38,14 @@ $(document).ready(()=> {
 
         $.ajax({
             type : "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
             url : "/likeMessage",
             data : JSON.stringify(data),
             dataType : 'json',
             timeout : 100000,
-            beforeSend :(xhr)=>{
-                xhr.setRequestHeader(csrfheader,csrftoken);
+            beforeSend :(xhr) => {
+                xhr.setRequestHeader("Accept", "application/json");
+                xhr.setRequestHeader("Content-Type", "application/json");
+                // xhr.setRequestHeader(csrfheader,csrftoken);
             },
             success : (data) =>{
                 console.log("SUCCESS : ", data);

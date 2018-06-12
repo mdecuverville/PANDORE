@@ -12,6 +12,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<c:url var="home" value="/" scope="request" />
+
+
 <html>
 <head>
     <meta name="_csrf" content="${_csrf.token}"/>
@@ -86,5 +89,55 @@
             <%@include file="../../shared/footer.jsp"%>
         </div>
     </div>
+
+    <%--<script>--%>
+        <%--$(document).ready(function($) {--%>
+
+            <%--let likebtns = $(".likebtn");--%>
+            <%--likebtns.click(function(){--%>
+                <%--let mId = parseInt($(this).prev().val().replace(/\s/g,''));--%>
+                <%--console.log("trying to like message "+mId);--%>
+                <%--likeAjax(mId);--%>
+            <%--});--%>
+
+        <%--});--%>
+
+        <%--function likeAjax(mId) {--%>
+
+            <%--var data = {}--%>
+            <%--data["id"] = mId;--%>
+
+            <%--$.ajax({--%>
+                <%--type : "POST",--%>
+                <%--headers: {--%>
+                    <%--'Accept': 'application/json',--%>
+                    <%--'Content-Type': 'application/json'--%>
+                <%--},--%>
+                <%--url : "${home}test/test",--%>
+                <%--data : JSON.stringify(data),--%>
+                <%--dataType : 'json',--%>
+                <%--timeout : 100000,--%>
+                <%--success : function(data) {--%>
+                    <%--console.log("SUCCESS: ", data);--%>
+                    <%--display(data);--%>
+                <%--},--%>
+                <%--error : function(e) {--%>
+                    <%--console.log("ERROR: ", e);--%>
+                    <%--display(e);--%>
+                <%--},--%>
+                <%--done : function(e) {--%>
+                    <%--console.log("DONE");--%>
+                <%--}--%>
+            <%--});--%>
+
+        <%--}--%>
+
+
+        <%--function display(data) {--%>
+            <%--var json = "<h4>Ajax Response</h4><pre>"--%>
+                <%--+ JSON.stringify(data, null, 4) + "</pre>";--%>
+            <%--$('#feedback').html(json);--%>
+        <%--}--%>
+    <%--</script>--%>
 </body>
 </html>
