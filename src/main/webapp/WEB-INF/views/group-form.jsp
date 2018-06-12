@@ -22,7 +22,7 @@
                     <form:hidden path="id" />
                     <tr>
                         <td><label for="name">Group Name :</label></td>
-                        <td><form:input name="nane" path="userGroupName"/></td>
+                        <td><form:input name="name" path="userGroupName"/></td>
                     </tr>
                     <tr>
                         <td><label></label></td>

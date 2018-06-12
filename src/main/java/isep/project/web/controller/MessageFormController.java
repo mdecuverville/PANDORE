@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -89,6 +91,15 @@ public class MessageFormController {
 
     }
 
+    @GetMapping("/add/{conversationId}")
+    public String add(@PathVariable("conversationId") int conversationId, Model theModel) {
+        ConversationEntity conversation = conversationService.getById(conversationId);
+
+        theModel.addAttribute("conversation", conversation);
+
+        return "conversation-form";
+    }
+
     @PostMapping("/save/{conversationId}")
     public String save(@PathVariable("conversationId") int conversationId, @ModelAttribute("message") MessageEntity theMessage) {
 
@@ -96,12 +107,19 @@ public class MessageFormController {
 
             ConversationEntity conversation = conversationService.getById(conversationId);
 
-            messageService.save(theMessage);
+            UserEntity loggedUser = userService.getByEmail(UserEntity.getLoggedUser());
 
-            conversation.addMessage(theMessage);
+            theMessage.setCreatedBy(loggedUser);
+
+            theMessage.setCreatedAt(new Date(Calendar.getInstance().getTime().getTime()));
+
+            conversationService.save(conversation);
+
             theMessage.setConversationIn(conversation);
 
-            return "redirect:/message/list";
+            messageService.save(theMessage);
+
+            return "redirect:/send/add/"+conversationId;
         }
 
         catch (NullPointerException e) {

@@ -1,184 +1,60 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
     <jsp:include page="${pageContext.request.contextPath}/shared/resources.jsp" flush="true" />
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/in"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/index.js"></script>
     <title>Panneau d'affichage</title>
 </head>
-<body class="bg-dark" style="color: #dddddd">
+<body class="bg-info" style="color: #dddddd">
 <div id="container">
     <div id="header">
         <jsp:include page="${pageContext.request.contextPath}/shared/header.jsp" flush="true" />
     </div>
     <div class="container bg-light">
-        <div class="messages-bloc">
-            <div class="page-header text-muted">
-                <h4>Example page header <small class="text-body">(Subtext for header)</small></h4>
-            </div>
-            <div class="jumbotron">
+        <div class="jumbotron" style="padding: 2rem;">
 
-                <h1>Main message</h1>
-                <p>
-                    Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                    risus.
-                    Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                    risus.
-                    Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                    risus.
-                    Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                    risus.
-                    Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                    risus.
-                    Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                    risus.
-                    Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                    risus.
-                </p>
-                <hr>
-                <h6>Date : 12 juin 2018</h6>
-                <h6>Category : category type</h6>
-                <h6>Etat de la demande : en cours</h6>
-                <div class="float-right">
-                    <p>25&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i> </p>
-                </div>
-
-
-            </div>
-
-            <div class="media media-space">
-                <div class="media-left media-left-space">
-                    <a href="#">
-                        <img class="media-object" src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_53.png" alt="...">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading text-muted">Media heading</h4>
-                    <p>
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                    </p>
-                </div>
-            </div>
-
-            <div class="media media-space">
-                <div class="media-left media-left-space">
-                    <a href="#">
-                        <img class="media-object" src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_53.png" alt="...">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading text-muted">Media heading</h4>
-                    <p>
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                    </p>
-                </div>
-            </div>
-
-            <div class="media media-space">
-                <div class="media-left media-left-space">
-                    <a href="#">
-                        <img class="media-object" src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_53.png" alt="...">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading text-muted">Media heading</h4>
-                    <p>
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                    </p>
-                </div>
-            </div>
-
-            <div class="media media-space">
-                <div class="media-left media-left-space">
-                    <a href="#">
-                        <img class="media-object" src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_53.png" alt="...">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading text-muted">Media heading</h4>
-                    <p>
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                        Sed felis lorem, venenatis sed malesuada vitae, tempor vel turpis. Mauris in dui velit, vitae mollis
-                        risus.
-                    </p>
-                </div>
-            </div>
+            <h1 class="text-dark">${conversation.conversationName}</h1>
+            <p class="text-secondary">
+                ${conversation.messages.get(0).content}
+            </p>
+            <hr>
+            <h6 class="text-secondary">Date : ${conversation.createdAt}</h6>
+            <%--<h6>Category : </h6>--%>
+            <%--<h6>Etat de la demande : en cours</h6>--%>
         </div>
-    </div>
-    <div class="else-bloc">
-        <nav aria-label="...">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
+        <c:choose>
+            <c:when test="${conversation.messages.size()>=2}">
+                <div class="media media-space">
+                    <div class="media-body">
+                        <h4 class="media-heading text-dark">${conversation.messages.get(1).title}</h4>
+                        <p class="text-secondary">
+                            ${conversation.messages.get(1).content}
+                        </p>
+                        <hr>
+                        <p class="text-secondary">Date : ${conversation.messages.get(1).createdAt}</p>
+                    </div>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <security:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER', 'ROLE_ADMINISTRATION')">
+                    <form method="post" action="/send/save/${conversation.id}">
+                        <div class="form-group">
+                            <input name="title" type="text" placeholder="Sujet..." class="form-control col-12 col-md-8" value="RE: ${conversation.conversationName}"/><br/>
+                            <textarea class="form-control col-12 col-md-8" name="content" placeholder="Répondez au message..." rows="5" maxlength="400"></textarea>
+                        </div>
+                        <br>
+                        <input type="hidden"
+                               name="${_csrf.parameterName}"
+                               value="${_csrf.token}"/>
 
-        <form id="comment__form">
-            <textarea id="comment__textarea" placeholder="Join the discussion…" cols="30" rows="4" maxlength="132"></textarea>
-            <br>
-            <button type="button" class="btn btn-secondary btn-lg float-right">Answer</button>
-        </form>
-
+                        <button type="submit" class="btn btn-dark">Envoyer</button>
+                    </form>
+                </security:authorize>
+            </c:otherwise>
+        </c:choose>
         <br>
         <br>
         <br>

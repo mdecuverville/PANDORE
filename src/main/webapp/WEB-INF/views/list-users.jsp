@@ -4,7 +4,7 @@
 <html>
 <head>
     <jsp:include page="${pageContext.request.contextPath}/shared/resources.jsp" flush="true" />
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/in"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/index.js"></script>
     <title>Panneau d'affichage</title>
 </head>
 <body class="bg-dark" style="color: #dddddd">

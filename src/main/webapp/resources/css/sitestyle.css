@@ -106,17 +106,6 @@ body.my-login-page {
 
 }
 
-.jumbotron:hover {
-    background-color: black;
-    color: white;
-}
-
-.media:hover {
-    background-color: lightgray;
-    border-radius: 5px;
-    border-top: 1px solid lightgray;
-}
-
 .media-space {
     padding: 10px;
     border-top: 1px solid grey;

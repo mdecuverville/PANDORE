@@ -45,6 +45,12 @@ public class LikeEntity {
         this.likedMessage = likedMessage;
     }
 
+    public LikeEntity(boolean isDislike, MessageEntity message, UserEntity user) {
+        this.isDislike = isDislike;
+        this.likedMessage = message;
+        this.likedBy = user;
+    }
+
     public int getId() {
         return id;
     }

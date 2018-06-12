@@ -1,15 +1,24 @@
 $(document).ready(function() {
-    $('#tablePanneau').DataTable({
-        columnDefs: [ {
-            targets: [ 0 ],
-            orderData: [ 0, 1 ]
-        }, {
-            targets: [ 1 ],
-            orderData: [ 1, 0 ]
-        }, {
-            targets: [ 4 ],
-            orderData: [ 4, 0 ]
-        } ]
+
+    $('#panneau').DataTable({
+        "order": [ 0, 'desc' ],
+        pageLength : 5,
+        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'tous']],
+        "columns": [
+            {visible:false, searchable:false},
+            { "width": "60%" },
+            null,
+            { "width": "20%" },
+        ],
+        retrieve: true,
+        "language": {
+            "lengthMenu": "Montrer _MENU_ messages par page",
+            "zeroRecords": "Aucun Message",
+            "info": "Page _PAGE_ sur _PAGES_",
+            "infoEmpty": "Aucune information disponible",
+            "infoFiltered": "(filtré parmis _MAX_ messages)"
+        },
+
     });
 
     $("input[type='password'][data-eye]").each(function(i) {

@@ -63,7 +63,7 @@
             </div>
         </div>
         <% } else { %>
-        <a href="${pageContext.request.contextPath}/showMyLoginPage" class="btn btn-primary">
+        <a href="${pageContext.request.contextPath}/login" class="btn btn-primary">
             <span class="fas fa-sign-in-alt" aria-hidden="true"></span>
             Connexion
         </a>

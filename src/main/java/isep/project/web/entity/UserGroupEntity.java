@@ -1,5 +1,8 @@
 package isep.project.web.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,12 +24,13 @@ public class UserGroupEntity {
     @Column(name = "user_group_name", nullable = true, length = 45)
     private String userGroupName;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+    @ManyToMany( cascade = {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.DETACH,
             CascadeType.REFRESH,
     })
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinTable(
             name = "users_groups_categories",
             joinColumns = @JoinColumn(name = "users_groups_id"),
@@ -34,7 +38,7 @@ public class UserGroupEntity {
     )
     private List<CategoryEntity> categories;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.DETACH,

@@ -1,5 +1,9 @@
 package isep.project.web.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Calendar;
@@ -40,12 +44,13 @@ public class ConversationEntity {
     @JoinColumn(name = "conversation_author")
     private UserEntity author;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+    @ManyToMany(cascade = {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.DETACH,
             CascadeType.REFRESH,
     })
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinTable(
             name = "users_conversations",
             joinColumns = @JoinColumn(name = "conversations_id"),
@@ -53,7 +58,7 @@ public class ConversationEntity {
     )
     private List<UserEntity> usersIn;
 
-    @OneToMany(mappedBy ="conversationIn", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy ="conversationIn", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<MessageEntity> messages;
 
     public ConversationEntity() {
