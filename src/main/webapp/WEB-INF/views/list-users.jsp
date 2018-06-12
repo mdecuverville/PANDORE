@@ -7,7 +7,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/in"></script>
     <title>Panneau d'affichage</title>
 </head>
-<body class="bg-dark" style="color: #dddddd">
+<body class="bg-info" style="color: #dddddd">
 <div id="container">
     <div id="header">
         <jsp:include page="${pageContext.request.contextPath}/shared/header.jsp" flush="true" />

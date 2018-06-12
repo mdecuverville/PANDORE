@@ -7,7 +7,7 @@
     <script type="text/javascript" src="scripts/index.js"></script>
     <title>Panneau d'affichage</title>
 </head>
-<body class="bg-dark" style="color: #dddddd">
+<body class="bg-info" style="color: #dddddd">
 <div id="container">
     <div id="header">
         <%@include file="../../shared/header.jsp"%>
