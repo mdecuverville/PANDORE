@@ -13,6 +13,7 @@ $(document).ready(()=> {
             { "width": "20%" },
             null,
         ],
+        retrieve: true,
         "language": {
             "lengthMenu": "Montrer _MENU_ messages par page",
             "zeroRecords": "Aucun Message",

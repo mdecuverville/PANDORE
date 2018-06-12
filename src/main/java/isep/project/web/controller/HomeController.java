@@ -94,7 +94,6 @@ public class HomeController {
                 like = likeService.getLikeIfExists(user,message);
             }
 
-
             //check if user is allowed to like
             if(like == null && user!=null && message!=null) {
                 // create like if none exist
