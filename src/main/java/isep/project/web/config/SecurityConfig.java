@@ -19,8 +19,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	// add a reference to our security data source
-
+	// add a reference to our security data sourc
 	@Autowired
 	private DataSource securityDataSource;
 
@@ -35,9 +34,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
+		http.csrf().disable();
+
 		http.authorizeRequests()
-				.antMatchers("/member/**").hasAnyRole( "ADMINISTRATOR", "TEACHER", "STUDENT", "ADMIN")
-				.antMatchers("/admin/**").hasRole( "ADMIN")
+				.antMatchers("/**/add").hasAnyRole( "ADMINISTRATOR", "TEACHER", "STUDENT", "ADMIN")
+				.antMatchers("/**/delete").hasAnyRole( "ADMINISTRATOR", "TEACHER", "STUDENT", "ADMIN")
+				.antMatchers("/**/update").hasAnyRole( "ADMINISTRATOR", "TEACHER", "STUDENT", "ADMIN")
+				.antMatchers("/**/list").hasRole( "ADMIN")
 				.antMatchers("/resources/**").permitAll()
 				.antMatchers("/send/**").authenticated()
 				.antMatchers("/").permitAll()
@@ -45,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.httpBasic()
 				.and()
 				.formLogin()
-				.loginPage("/showMyLoginPage")
+				.loginPage("/login")
 				.loginProcessingUrl("/authenticateTheUser")
 				.permitAll()
 				.and()

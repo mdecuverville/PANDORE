@@ -1,5 +1,7 @@
 package isep.project.web.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -43,7 +45,8 @@ public class UserEntity {
     @OneToMany(mappedBy ="author", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ConversationEntity> conversationsOwned;
 
-    @OneToMany(mappedBy ="likedBy", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy ="likedBy", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<LikeEntity> likes;
 
     @OneToMany(mappedBy ="createdBy", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

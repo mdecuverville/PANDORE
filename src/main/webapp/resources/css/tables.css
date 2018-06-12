@@ -1,0 +1,15 @@
+.listTable{
+    color:#343a40;
+    width:100%;
+}
+
+th, td, thead, tbody {
+    border: 2px solid #343a40;
+}
+th {
+    background: #1094a8;
+}
+
+.memberTable, .catTable, .grpTable{
+    color:black!important;
+}

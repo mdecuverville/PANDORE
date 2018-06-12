@@ -20,7 +20,7 @@ public class CategoryEntity {
     @Column(name = "category_name", nullable = true, length = 45)
     private String categoryName;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.DETACH,

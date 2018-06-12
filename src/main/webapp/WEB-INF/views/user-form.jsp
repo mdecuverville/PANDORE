@@ -5,10 +5,9 @@
 <html>
 <head>
     <%@include file="../../shared/resources.jsp"%>
-    <script type="text/javascript" src="scripts/index.js"></script>
-    <title>Panneau d'affichage</title>
+    <title>add user</title>
 </head>
-<body class="bg-dark" style="color: #dddddd">
+<body class="bg-info" style="color: #dddddd">
 <div id="container">
     <div id="header">
         <%@include file="../../shared/header.jsp"%>
@@ -17,24 +16,24 @@
         <div >
             <h3>Save user</h3>
             <form:form action="save" modelAttribute="user" method="post" >
-                <table>
+                <table class="table" >
                     <tbody>
                     <form:hidden path="id" />
                     <tr>
                         <td><label for="firstname">Firstname :</label></td>
-                        <td><form:input name="firstname" path="firstName"/></td>
+                        <td><form:input cssClass="form-control" name="firstname" path="firstName"/></td>
                     </tr>
                     <tr>
                         <td><label for="lastname">Lastname :</label></td>
-                        <td><form:input name="lastname" path="lastName"/></td>
+                        <td><form:input cssClass="form-control" name="lastname" path="lastName"/></td>
                     </tr>
                     <tr>
                         <td><label for="email">Email :</label></td>
-                        <td><form:input name="email" path="email"/></td>
+                    <td><form:input cssClass="form-control" name="email" path="email"/></td>
                     </tr>
                     <tr>
                         <td><label for="password">Password :</label></td>
-                        <td><form:password name="password" path="passwordHash"/></td>
+                        <td><form:password cssClass="form-control" name="password" path="passwordHash"/></td>
                     </tr>
                     <tr>
                         <td><label for="roleName">Role :</label></td>
